@@ -123,6 +123,53 @@ export const projects: Project[] = [
     stack: ["Python 3.12", "FastAPI", "SQLAlchemy 2.0 (async)", "PostgreSQL 16", "pgvector", "Gemini embeddings", "Docker", "pytest"],
   },
   {
+    slug: "fraud-detection-mlops",
+    title: "Fraud Detection — MLOps Pipeline",
+    outcome:
+      "End-to-end fraud detection: Airflow-orchestrated training, MLflow tracking, and a FastAPI scoring API — PR-AUC 0.91 on a realistically imbalanced (~0.4% fraud) dataset.",
+    tags: ["MLOps", "Airflow", "MLflow", "XGBoost", "FastAPI"],
+    featured: true,
+    links: { github: "https://github.com/abdulmannan002/fraud-detection-mlops", demo: "", loom: "" },
+    problem:
+      "Fraud is a needle-in-a-haystack problem: at ~0.4% fraud, 'accuracy' is a trap — a model " +
+      "that predicts 'never fraud' is 99.6% accurate and completely useless. The real job is catching " +
+      "fraud at a precision the business can act on, and doing it inside a pipeline that can be " +
+      "retrained, tracked, and served — not a one-off notebook.",
+    architectureText:
+      "Airflow DAG (fraud_training) -> pipeline: data -> features -> XGBoost\n" +
+      "-> MLflow (params, metrics, model) -> MinIO / S3 artifacts\n" +
+      "-> model registry (joblib) -> FastAPI /predict for real-time scoring.\n\n" +
+      "Runs standalone with one command, or as a full Docker Compose stack\n" +
+      "(Airflow + MLflow + MinIO + Postgres + Redis).",
+    decisions: [
+      {
+        choice: "Optimize for PR-AUC and recall-at-target-precision, not accuracy",
+        why: "On a 0.4% base rate, accuracy is meaningless; precision/recall on the fraud class is what maps to real cost, so the decision threshold is chosen to hit a business target precision (e.g. 90%) and maximize recall there.",
+      },
+      {
+        choice: "XGBoost with scale_pos_weight instead of naive resampling",
+        why: "Weighting the positive class handles the imbalance without inventing synthetic fraud that can leak optimism into evaluation; SMOTE is available behind a config flag for comparison.",
+      },
+      {
+        choice: "Airflow + MLflow from the start, model logic in a tested package",
+        why: "Keeping the pipeline in a small, unit-tested `fraud` package (not in the DAG) makes it runnable standalone AND orchestratable — the same code a reviewer runs locally is what production schedules.",
+      },
+    ],
+    hardProblem:
+      "The core engineering problem is the imbalance-plus-thresholding trap. A high ROC-AUC hides a " +
+      "model that's useless in production if it can't hit a workable precision. I made evaluation report " +
+      "PR-AUC and then pick the decision threshold that meets a target precision while maximizing recall " +
+      "— so the reported recall (0.85 at 90% precision) is an operational number, not a best-case one. " +
+      "The whole pipeline is reproducible from a single seed so results are defensible.",
+    metrics: [
+      { label: "PR-AUC", value: "0.91" },
+      { label: "ROC-AUC", value: "0.999" },
+      { label: "Recall @ 90% precision", value: "0.85" },
+      { label: "Tests", value: "8/8 passing" },
+    ],
+    stack: ["Python", "XGBoost", "scikit-learn", "MLflow", "Apache Airflow", "FastAPI", "MinIO", "Docker", "pytest"],
+  },
+  {
     slug: "cnic-ocr",
     title: "CNIC OCR & Document Extraction",
     outcome:
