@@ -22,7 +22,7 @@ export type Project = {
   // ---- Case study fields (the /projects/<slug> page) ----
   problem: string; // 2–3 sentences: the real need this solves
   // Architecture: either an image at /public/... OR an ASCII/text description.
-  architectureImage?: string; // e.g. "/architecture/assanpay.png"
+  architectureImage?: string; // e.g. "/architecture/payments.png"
   architectureText?: string; // fallback if you don't have a diagram yet
   decisions: { choice: string; why: string }[]; // decisions + tradeoffs
   hardProblem: string; // the most important paragraph — real depth vs tutorials
@@ -235,8 +235,8 @@ export const projects: Project[] = [
     stack: ["Python", "PyTorch", "ResNet50", "scikit-learn (SVM)", "SHAP", "Streamlit"],
   },
   {
-    slug: "assanpay",
-    title: "AssanPay — Fintech Payments Backend",
+    slug: "fintech-payments-backend",
+    title: "Fintech Payments Backend",
     outcome:
       "Core backend for a merchant payments platform: onboarding, KYC, wallet ledger, and QR payments, built to handle money correctly.",
     tags: ["NestJS", "Node.js", "PostgreSQL", "Payments", "Prisma"],
@@ -268,8 +268,8 @@ export const projects: Project[] = [
     stack: ["Node.js", "TypeScript", "Express", "NestJS", "PostgreSQL", "Prisma", "AWS S3", "Firebase"],
   },
   {
-    slug: "1stbond",
-    title: "1stBond — Real-time Social & Marketplace",
+    slug: "realtime-social-marketplace",
+    title: "Real-time Social & Marketplace",
     outcome:
       "Modular NestJS backend (19+ modules) powering real-time chat, location sharing, and panic alerts, with full unit + e2e test coverage.",
     tags: ["NestJS", "Socket.IO", "PostgreSQL", "Prisma", "Testing"],
