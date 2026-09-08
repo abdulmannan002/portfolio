@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site, skills } from "@/content/site";
 import { projects } from "@/content/projects";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -7,25 +8,38 @@ export default function Home() {
     <>
       {/* ---------- Hero ---------- */}
       <section className="hero-glow border-b border-border/60">
-        <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
-          <p className="font-mono text-sm text-accent-soft">{site.role}</p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-            {site.name}
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted sm:text-xl">
-            {site.tagline}
-          </p>
+        <div className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
+          {/* Desktop/tablet: branded banner. Its text mirrors the mobile hero
+              below, so the <h1> stays in the DOM for SEO/accessibility. */}
+          <Image
+            src="/hero-banner.png"
+            alt={`${site.name} — ${site.role}. ${site.tagline}`}
+            width={2172}
+            height={724}
+            priority
+            sizes="(min-width: 640px) 64rem, 0px"
+            className="hidden w-full rounded-2xl border border-border/60 sm:block"
+          />
 
-          {/* Stat chips */}
-          <div className="mt-8 flex flex-wrap gap-3">
-            {site.stats.map((s) => (
-              <span key={s.label} className="chip !text-foreground">
-                {s.label}
-              </span>
-            ))}
+          {/* Mobile: readable text hero (banner text is too small on phones). */}
+          <div className="sm:hidden">
+            <p className="font-mono text-sm text-accent-soft">{site.role}</p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight">
+              {site.name}
+            </h1>
+            <p className="mt-4 max-w-2xl text-lg text-muted">{site.tagline}</p>
+
+            {/* Stat chips */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {site.stats.map((s) => (
+                <span key={s.label} className="chip !text-foreground">
+                  {s.label}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* CTAs */}
+          {/* CTAs (both layouts) */}
           <div className="mt-8 flex flex-wrap gap-3">
             {site.links.resume && (
               <a
