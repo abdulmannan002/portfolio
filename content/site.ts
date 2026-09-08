@@ -14,8 +14,8 @@ export const site = {
 
   // Stat chips in the hero — recruiters scan these faster than prose.
   stats: [
-    { label: "5,000+ inferences/day in production" },
-    { label: "10 RAG assistants · 10k-doc KB" },
+    { label: "5,000+ inferences/day" },
+    { label: "10 RAG assistants" },
     { label: "LLM · RAG · Computer Vision" },
   ],
 
