@@ -32,9 +32,6 @@ export function Footer() {
             </a>
           )}
         </div>
-        <p className="mt-10 text-xs text-muted">
-          © {new Date().getFullYear()} {site.name}. Built with Next.js & Tailwind.
-        </p>
       </div>
     </footer>
   );
