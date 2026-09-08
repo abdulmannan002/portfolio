@@ -3,7 +3,7 @@
 // Header identity (name, role, email, links) is reused from site.ts.
 
 export const resume = {
-  location: "Karachi, Pakistan (open to remote — overlaps US & EU hours)",
+  location: "Karachi, Pakistan · Open to Remote · US/EU Time-Zone Overlap",
   phone: "+92 309 5703201",
   portfolioUrl: "portfolio-one-pi-12.vercel.app",
 

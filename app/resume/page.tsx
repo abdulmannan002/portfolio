@@ -37,47 +37,48 @@ export default function ResumePage() {
           <h1 className="text-3xl font-bold tracking-tight text-neutral-900">
             {site.name}
           </h1>
-          <p className="mt-1 text-sm font-medium text-indigo-700">{site.role}</p>
-          <p className="mt-2 text-xs text-neutral-600">
-            {resume.location}
-            {"  |  "}
-            <a href={`mailto:${site.email}`} className="hover:underline">
+          <p className="mt-1 text-sm font-semibold text-indigo-700">{site.role}</p>
+          <p className="mt-2 text-xs text-neutral-600">{resume.location}</p>
+          <p className="mt-1 text-xs text-neutral-600">
+            <a href={`mailto:${site.email}`} className="text-indigo-700 hover:underline">
               {site.email}
             </a>
-            {"  |  "}
+            {" · "}
             {resume.phone}
-          </p>
-          <p className="mt-1 text-xs text-neutral-600">
             {site.links.linkedin && (
-              <a
-                href={site.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-700 hover:underline"
-              >
-                {site.links.linkedin.replace(/^https?:\/\/(www\.)?/, "")}
-              </a>
+              <>
+                {" · "}
+                <a
+                  href={site.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-700 hover:underline"
+                >
+                  LinkedIn
+                </a>
+              </>
             )}
-            {"   |   "}
             {site.links.github && (
-              <a
-                href={site.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-700 hover:underline"
-              >
-                {site.links.github.replace(/^https?:\/\/(www\.)?/, "")}
-              </a>
+              <>
+                {" · "}
+                <a
+                  href={site.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-700 hover:underline"
+                >
+                  GitHub
+                </a>
+              </>
             )}
-            {"   |   "}
-            Portfolio:{" "}
+            {" · "}
             <a
               href={`https://${resume.portfolioUrl}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-indigo-700 hover:underline"
             >
-              {resume.portfolioUrl}
+              Portfolio
             </a>
           </p>
         </header>
