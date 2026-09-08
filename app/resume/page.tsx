@@ -49,18 +49,36 @@ export default function ResumePage() {
           </p>
           <p className="mt-1 text-xs text-neutral-600">
             {site.links.linkedin && (
-              <a href={site.links.linkedin} className="text-indigo-700 hover:underline">
+              <a
+                href={site.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-700 hover:underline"
+              >
                 {site.links.linkedin.replace(/^https?:\/\/(www\.)?/, "")}
               </a>
             )}
             {"   |   "}
             {site.links.github && (
-              <a href={site.links.github} className="text-indigo-700 hover:underline">
+              <a
+                href={site.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-700 hover:underline"
+              >
                 {site.links.github.replace(/^https?:\/\/(www\.)?/, "")}
               </a>
             )}
             {"   |   "}
-            <span>Portfolio: {resume.portfolioUrl}</span>
+            Portfolio:{" "}
+            <a
+              href={`https://${resume.portfolioUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-700 hover:underline"
+            >
+              {resume.portfolioUrl}
+            </a>
           </p>
         </header>
 
