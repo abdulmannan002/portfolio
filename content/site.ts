@@ -23,7 +23,7 @@ export const site = {
   links: {
     github: "https://github.com/abdulmannan002",
     linkedin: "https://www.linkedin.com/in/abdul-mannan-b96307323/",
-    resume: "/resume.pdf", // drop your resume at public/resume.pdf
+    resume: "/resume", // live resume page (print/save-as-PDF from there)
   },
 };
 

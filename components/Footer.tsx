@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 export function Footer() {
   const { github, linkedin, resume } = site.links;
   return (
-    <footer id="contact" className="border-t border-border/60">
+    <footer id="contact" className="no-print border-t border-border/60">
       <div className="mx-auto max-w-5xl px-6 py-14">
         <h2 className="text-2xl font-semibold tracking-tight">Get in touch</h2>
         <p className="mt-2 max-w-md text-muted">
@@ -28,7 +28,7 @@ export function Footer() {
           )}
           {resume && (
             <a href={resume} className="chip px-4 py-2 hover:text-foreground">
-              Resume (PDF)
+              Resume
             </a>
           )}
         </div>

@@ -29,6 +29,29 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---- Print (resume "Save as PDF") ---- */
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+  }
+  /* Site chrome and on-screen-only controls never print. */
+  .no-print {
+    display: none !important;
+  }
+  /* The resume sheet becomes the whole page. */
+  .resume-sheet {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  @page {
+    margin: 14mm;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur">
+    <header className="no-print sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link href="/" className="font-semibold tracking-tight hover:text-accent-soft">
           {site.name}
