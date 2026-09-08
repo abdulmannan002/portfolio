@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="mt-6">
-      <h2 className="border-b border-neutral-300 pb-1 text-xs font-bold uppercase tracking-widest text-indigo-700">
+    <section className="mt-3">
+      <h2 className="border-b border-neutral-300 pb-0.5 text-[10.5px] font-bold uppercase tracking-wider text-indigo-700">
         {title}
       </h2>
-      <div className="mt-3">{children}</div>
+      <div className="mt-1.5">{children}</div>
     </section>
   );
 }
@@ -31,15 +31,15 @@ export default function ResumePage() {
       </div>
 
       {/* The "paper" sheet — always light so it reads like a document and prints clean */}
-      <article className="resume-sheet rounded-lg bg-white px-10 py-10 text-[13px] leading-relaxed text-neutral-800 shadow-xl">
+      <article className="resume-sheet rounded-lg bg-white px-9 py-8 text-[11.5px] leading-[1.4] text-neutral-800 shadow-xl">
         {/* Header */}
         <header className="text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-900">
+          <h1 className="text-2xl font-bold tracking-tight text-neutral-900">
             {site.name}
           </h1>
-          <p className="mt-1 text-sm font-semibold text-indigo-700">{site.role}</p>
-          <p className="mt-2 text-xs text-neutral-600">{resume.location}</p>
-          <p className="mt-1 text-xs text-neutral-600">
+          <p className="mt-0.5 text-sm font-semibold text-indigo-700">{site.role}</p>
+          <p className="mt-1.5 text-[11px] text-neutral-600">{resume.location}</p>
+          <p className="mt-1 text-[11px] text-neutral-600">
             <a href={`mailto:${site.email}`} className="text-indigo-700 hover:underline">
               {site.email}
             </a>
@@ -102,7 +102,7 @@ export default function ResumePage() {
 
         {/* Work Experience */}
         <Section title="Work Experience">
-          <div className="space-y-4">
+          <div className="space-y-2.5">
             {resume.experience.map((job) => (
               <div key={`${job.role}-${job.company}`}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-2">
@@ -114,7 +114,7 @@ export default function ResumePage() {
                 {job.location && (
                   <p className="text-xs italic text-neutral-600">{job.location}</p>
                 )}
-                <ul className="mt-1.5 list-disc space-y-1 pl-5">
+                <ul className="mt-1 list-disc space-y-0.5 pl-5">
                   {job.bullets.map((b, i) => (
                     <li key={i}>
                       {"lead" in b && b.lead && (
@@ -131,7 +131,7 @@ export default function ResumePage() {
 
         {/* Projects */}
         <Section title="Projects">
-          <ul className="list-disc space-y-1 pl-5">
+          <ul className="list-disc space-y-0.5 pl-5">
             {resume.projects.map((p) => (
               <li key={p.name}>
                 <span className="font-semibold text-neutral-900">{p.name}</span> — {p.text}
