@@ -3,8 +3,8 @@
 
 export const site = {
   name: "Abdul Mannan",
-  role: "AI / ML Engineer",
-  tagline: "I ship AI systems to production — not demos.",
+  role: "AI / ML Engineer · Backend Engineer",
+  tagline: "I build production AI systems and the backend infrastructure behind them.",
   // 2–3 sentence about blurb. Keep it tight.
   about:
     "AI/ML engineer who ships LLM, RAG, and computer-vision systems to production — " +
