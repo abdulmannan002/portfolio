@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-one-pi-12.vercel.app"),
   title: `${site.name} — ${site.role}`,
   description: site.tagline,
   openGraph: {
